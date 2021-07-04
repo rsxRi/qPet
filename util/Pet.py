@@ -1,5 +1,4 @@
 import datetime
-import json
 
 
 class Pet:
@@ -14,7 +13,7 @@ class Pet:
         self.birthday = birthday
         self.name = name
         self.age = age
-        # Lower core value is worse than high core value, although names might not reflect that.
+        # Lower core value is worse than high core value
         self.cores = {"health": health,
                       "energy": energy,
                       "boredom": boredom,
@@ -34,9 +33,16 @@ class Pet:
         elif self.cores[core] < 0:
             self.cores[core] = 0
 
+        if self.cores["health"] <= 0:
+            self.death()
+
     def change_name(self, name):
         """Changes the pet's name"""
         self.name = name
+
+    def death(self):
+        return f'{self.name} has passed on.\n' \
+               f'{self.name} was a {self.colour} {self.species} and was {self.age} days old.'
 
     def __str__(self):
         return_string = f"{self.name}\n{self.species}\n{self.colour}\n"

@@ -35,5 +35,3 @@ class Interaction:
 
     def load_game(self):
         self.pet = dill.load(open("pet.sve", "rb"))
-
-
